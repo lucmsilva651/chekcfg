@@ -1,34 +1,37 @@
 @echo off
 chcp 65001 >nul
 
-title CHKCFG ^<User: %USERNAME%^>
-echo 	CHKCFG ^<User: %USERNAME%^>
-echo 	Made by Lucas Gabriel (lucmsilva)
-echo 	------------------------------------------
-echo 	Main computer info:
+:main
+title CHKCFG [User: %USERNAME%]
 echo.
-echo 	OneDrive folder: %OneDrive%
-echo 	App Data folder (AppData): %APPDATA%
+echo 	CHKCFG [User: %USERNAME%]
+echo 	2023 Lucas Gabriel (lucmsilva)
+echo 	-------------------------------------------------
+echo 	Main computer info: [Updates every ~1 sec.]
+echo.
+echo 	Date + Time: %DATE% ^|^ %TIME%
+echo 	Computer Name: %COMPUTERNAME%
+echo 	Username: %USERNAME%
+echo 	User Path: %USERPROFILE%
+echo 	App Data: %APPDATA%
+echo 	Local App Data: %LOCALAPPDATA%
 echo 	Temporary folder: %TEMP%
+echo 	Public User folder: %PUBLIC%
 echo 	Executable formats: %PATHEXT%
 echo 	Operating System: %OS%
-echo 	Computer Name: %COMPUTERNAME%
-echo 	System Drive: %SystemDrive%
+echo 	System Drive: %SystemDrive%\
 echo 	System Root: %SystemRoot%
-echo 	Drive Path: %HOMEDRIVE%\
-echo 	User Path: %HOMEPATH%
-echo 	UP + DP: %HOMEDRIVE%%HOMEPATH%
-echo 	Public User Directory: %PUBLIC%
-echo 	Username: %USERNAME%
-echo 	Logon Server: %LOGONSERVER%
-echo 	LS + Username: %USERNAME%%LOGONSERVER%
-echo 	------------------------------------------
+echo 	Program Files: %ProgramFiles% ^|^ %ProgramFiles(x86)%
+echo 	-------------------------------------------------
 echo 	Processor information:
 echo.
-echo 	Number of processors: %NUMBER_OF_PROCESSORS%
+echo 	Number of processors (cores): %NUMBER_OF_PROCESSORS%
 echo 	Architeture: %PROCESSOR_ARCHITECTURE%
 echo 	Identifier: %PROCESSOR_IDENTIFIER%
 echo 	Revision: %PROCESSOR_REVISION%
-echo 	------------------------------------------
+echo 	-------------------------------------------------
+timeout /t 1 /nobreak >nul
+cls
+goto main
 echo.
 pause >nul
