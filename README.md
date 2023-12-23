@@ -1,2 +1,2 @@
 # chekcfg
-CHEKCFG - Simple specifications viewer in CMD
+CHKCFG - Simple specifications viewer in CMD
