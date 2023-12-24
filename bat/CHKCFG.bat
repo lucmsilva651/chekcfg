@@ -45,5 +45,3 @@ echo 	-------------------------------------------------
 timeout /t 1 /nobreak >nul
 cls
 goto main
-echo.
-pause >nul
