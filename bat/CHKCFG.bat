@@ -15,7 +15,8 @@ FOR /F "tokens=2 delims='='" %%A in ('wmic OS GET VERSION /value') do SET window
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NAME /value') do SET cpuname=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFCORES /value') do SET cpucores=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFLOGICALPROCESSORS /value') do SET cputhreads=%%A
-FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET VirtualizationFirmwareEnabled /value') do SET virtenabled=%%A
+FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET VIRTUALIZATIONFIRMWAREENABLED /value') do SET virtenabled=%%A
+FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET CURRENTCLOCKSPEED /value') do SET cpuclock=%%A
 
 :main
 title CHKCFG [User: %USERNAME%]
@@ -40,6 +41,7 @@ echo.
 echo 	Name: %CPUNAME%
 echo 	Number of cores: %CPUCORES% ▪ Threads: %CPUTHREADS%
 echo 	System Type: %SYSTYPE% ▪ Virtualization: %VIRTENABLED%
+echo 	CPU clock: %CPUCLOCK% MHz
 echo 	Identifier: %PROCESSOR_IDENTIFIER%
 echo 	Revision: %PROCESSOR_REVISION%
 echo 	-------------------------------------------------
