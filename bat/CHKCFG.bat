@@ -6,16 +6,18 @@ title CHKCFG [User: %USERNAME%]
 echo 	CHKCFG [User: %USERNAME%]
 echo 	2023 Lucas Gabriel (lucmsilva)
 echo 	-------------------------------------------------
-echo 	This project is in development. Incompatibilities with wmic
-echo 	can occur. If the program crashes past this screen, your
-echo 	Windows system isn't compatible with some method that I use
-echo 	to collect system data. Sorry for the inconvenience.
-echo 	But, if it works, give me a feedback sending a message on
-echo 	Telegram ^> https://t.me/lucmsilva651.
+echo 	This project is in development. Incompatibilities can occur.
+echo 	If the program crashes past this screen, your Windows system
+echo 	isn't compatible with some method that I use to collect
+echo 	system data. Sorry for the inconvenience. But, if it works,
+echo 	give me a feedback sending a message on Telegram:
+echo 	https://t.me/lucmsilva651.
 echo 	-------------------------------------------------
-echo 	Wait 10 seconds or press any key to continue.
-timeout /t 10 >nul
+echo 	Wait 20 seconds or press any key to continue.
+timeout /t 20 >nul
+goto collect
 
+:collect
 rem importing data from wmic
 FOR /F "tokens=2 delims='='" %%A in ('wmic BASEBOARD GET SERIALNUMBER /value') do SET serialnumber=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic BASEBOARD GET MANUFACTURER /value') do SET manufacturer=%%A
@@ -34,6 +36,7 @@ FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFCORES /value') do SET
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFLOGICALPROCESSORS /value') do SET cputhreads=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET VIRTUALIZATIONFIRMWAREENABLED /value') do SET virtenabled=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET CURRENTCLOCKSPEED /value') do SET cpuclock=%%A
+goto main
 
 rem main update code
 :main
