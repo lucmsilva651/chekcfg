@@ -19,6 +19,8 @@ goto collect
 
 :collect
 rem importing data from wmic
+echo.
+echo 	Collecting data via wmic
 FOR /F "tokens=2 delims='='" %%A in ('wmic BASEBOARD GET SERIALNUMBER /value') do SET serialnumber=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic BASEBOARD GET MANUFACTURER /value') do SET manufacturer=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic OS GET NAME /value') do SET osname=%%A
@@ -36,6 +38,7 @@ FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFCORES /value') do SET
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFLOGICALPROCESSORS /value') do SET cputhreads=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET VIRTUALIZATIONFIRMWAREENABLED /value') do SET virtenabled=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET CURRENTCLOCKSPEED /value') do SET cpuclock=%%A
+echo 	OK
 goto main
 
 rem main update code
