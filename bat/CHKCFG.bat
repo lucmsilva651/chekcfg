@@ -38,6 +38,8 @@ FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFCORES /value') do SET
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET NUMBEROFLOGICALPROCESSORS /value') do SET cputhreads=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET VIRTUALIZATIONFIRMWAREENABLED /value') do SET virtenabled=%%A
 FOR /F "tokens=2 delims='='" %%A in ('wmic CPU GET CURRENTCLOCKSPEED /value') do SET cpuclock=%%A
+FOR /F "tokens=2 delims='='" %%A in ('wmic MEMORYCHIP GET SPEED /value') do SET ramclock=%%A
+FOR /F "tokens=2 delims='='" %%A in ('wmic MEMORYCHIP GET CAPACITY /value') do SET rambytes=%%A
 echo 	OK
 goto main
 
@@ -51,24 +53,21 @@ echo 	-------------------------------------------------
 echo 	Main computer info: [Updates every ~1 sec.]
 echo.
 echo 	Date + Time: %DATE% ▪ %TIME%
-echo 	Username: %USERNAME% ▪ User Path: %USERPROFILE%
-echo 	Computer Name: %COMPUTERNAME%
+echo 	Username: %USERNAME% ▪ Path: %USERPROFILE%
+echo 	Computer name: %COMPUTERNAME%
 echo 	Manufacturer: %MANUFACTURER% ▪ Model: %MODEL%
-echo 	Model 2nd: %secmodel%
-echo 	Serial Number: %SERIALNUMBER% ▪ BIOS Version: %BIOSVER%
-echo 	Motherboard Model: %MBPRODUCT% ▪ Variant: %MBVARIANT%
-echo 	System Drive: %SystemDrive%\ ▪ System Root: %WINDOWSDIR%
+echo 	2nd model: %secmodel%
+echo 	Serial number: %SERIALNUMBER% ▪ BIOS Version: %BIOSVER%
+echo 	Motherboard model: %MBPRODUCT% ▪ Variant: %MBVARIANT%
+echo 	System drive: %SystemDrive%\ ▪ System Root: %WINDOWSDIR%
 echo 	Program Files: %ProgramFiles% ▪ %ProgramFiles(x86)%
-echo 	Operating System: %OSNAME% ▪ Version: %WINDOWSVER%
-echo 	-------------------------------------------------
-echo 	Processor information:
-echo.
-echo 	Name: %CPUNAME%
+echo 	Operating system: %OSNAME% ▪ Version: %WINDOWSVER%
+echo 	CPU name: %CPUNAME%
 echo 	Number of cores: %CPUCORES% ▪ Threads: %CPUTHREADS%
-echo 	System Type: %SYSTYPE% ▪ Virtualization: %VIRTENABLED%
+echo 	System type: %SYSTYPE% ▪ Virtualization: %VIRTENABLED%
 echo 	CPU clock: %CPUCLOCK% MHz
-echo 	Identifier: %PROCESSOR_IDENTIFIER%
-echo 	Revision: %PROCESSOR_REVISION%
+echo 	CPU identifier: %PROCESSOR_IDENTIFIER%
+echo 	RAM size: %RAMBYTES% bytes ▪ Clock: %RAMCLOCK% MHz
 echo 	-------------------------------------------------
 
 timeout /t 1 /nobreak >nul
